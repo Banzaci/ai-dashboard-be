@@ -12,5 +12,7 @@ class User(Base):
         primary_key=True,
         default=lambda: str(uuid.uuid4())
     )
+    first_name: Mapped[str] = mapped_column(String, unique=True, index=True)
+    last_name: Mapped[str] = mapped_column(String, unique=True, index=True)
     email: Mapped[str] = mapped_column(String, unique=True, index=True)
     password_hash: Mapped[str] = mapped_column(String, nullable=False)

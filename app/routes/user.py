@@ -2,33 +2,24 @@ from fastapi import APIRouter, Depends, HTTPException, Cookie
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
 from app.core.config import SECRET_KEY, ALGORITHM
+from app.db.session import get_db
+from app.models.user import User
+from sqlalchemy.orm import Session
 
 router = APIRouter()
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-def get_current_user(my: str = Cookie(None)):
-    if not my:
-        raise HTTPException(
-            status_code=401,
-            detail="Not authenticated"
-        )
+def get_current_user(
+    token: str = Depends(oauth2_scheme),
+    db: Session = Depends(get_db)
+):
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    email = payload["sub"]
 
-    try:
-        payload = jwt.decode(
-            my,
-            SECRET_KEY,
-            algorithms=[ALGORITHM]
-        )
-        return payload["sub"]
+    user = db.query(User).filter(User.email == email).first()
 
-    except:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid token"
-        )
+    if not user:
+        raise HTTPException(status_code=401, detail="Invalid user")
 
-
-@router.get("/me")
-def me(user: str = Depends(get_current_user)):
-    return {"user": user}
+    return user

@@ -1,4 +1,3 @@
-from bcrypt import gensalt, hashpw
 from jose import jwt
 from passlib.context import CryptContext
 from app.core.config import SECRET_KEY, ALGORITHM

@@ -8,4 +8,5 @@ def create_user(db, data):
     )
     db.add(user)
     db.commit()
+    db.refresh(user)
     return user

@@ -5,3 +5,21 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app/app
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: postgres-ai
+
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: chatbot
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

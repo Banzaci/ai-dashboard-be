@@ -1,7 +1,7 @@
 from app.db.session import get_db
 from app.models.user import User
 from app.core.security import hash_password, verify_password, create_access_token
-from fastapi import APIRouter, HTTPException, Depends, Response
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel, field_validator
 from sqlalchemy.orm import Session
 

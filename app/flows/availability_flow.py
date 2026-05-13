@@ -1,36 +1,46 @@
-from sqlalchemy.orm import Session
+from typing import Optional
 from app.models.room import Room  # (eller din egen model)
 from datetime import datetime
 from app.models.booking import Booking
 
-def availability_flow(db, date: str, guests: int):
+def availability_flow(
+    db,
+    guests: int,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None
+):
 
-    if not guests:
-        guests = 1
+    if start_date and not end_date:
+        return {
+            "message": "For how many nights?",
+            "status": "missing_nights"
+        }
 
-    # 1. baseline rooms
-    rooms = db.query(Room).filter(
-        Room.is_active == True,
-        Room.max_guests >= guests
-    ).all()
-
-    if not date:
+    if not start_date:
         return {
             "message": "Missing date",
             "status": "error"
         }
 
-    query_date = datetime.strptime(date, "%Y-%m-%d").date()
+    if not guests:
+        guests = 1
+
+    query_start = datetime.strptime(start_date, "%Y-%m-%d").date()
+
+    # baseline rooms
+    rooms = db.query(Room).filter(
+        Room.is_active == True,
+        Room.max_guests >= guests
+    ).all()
 
     available_rooms = []
 
     for room in rooms:
 
-        # kolla om rummet är bokat på datumet
         overlapping_booking = db.query(Booking).filter(
             Booking.room_id == room.id,
-            Booking.start_date <= query_date,
-            Booking.end_date >= query_date
+            Booking.start_date <= query_start,
+            Booking.end_date >= query_start
         ).first()
 
         if not overlapping_booking:
@@ -46,7 +56,7 @@ def availability_flow(db, date: str, guests: int):
     return {
         "message": f"{len(available_rooms)} rooms available.",
         "status": "ok",
-        "date": date,
+        "date": start_date,
         "guests": guests,
         "rooms": [
             {

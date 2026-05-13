@@ -28,7 +28,7 @@ def search_training_questions(db: Session, query: str):
         {"embedding": query_embedding}
     ).fetchone()
 
-    print(result)
+    print(f"Search result: {result}")
 
     if not result:
         return None

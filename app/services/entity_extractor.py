@@ -1,16 +1,29 @@
 import re
 from dateparser import parse
 
-from app.utils.extract_date import extract_date
+from app.utils.extract_date import extract_date, extract_date_range
 
 def extract_entities(text: str):
 
-    guests_match = re.search(r"(\d+)\s*(person|people|guests)?", text.lower())
+    # --------------------
+    # guests
+    # --------------------
+    guests_match = re.search(
+        r"(\d+)\s*(person|people|guests|pax|room)?",
+        text.lower()
+    )
     guests = int(guests_match.group(1)) if guests_match else 1
 
-    date = extract_date(text)
+    # --------------------
+    # dates
+    # --------------------
+    start_date, end_date = extract_date_range(text)
+
+    if not start_date:
+        start_date = extract_date(text)
 
     return {
         "guests": guests,
-        "date": date
+        "start_date": start_date,
+        "end_date": end_date
     }

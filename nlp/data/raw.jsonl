@@ -1,0 +1,18 @@
+{"text":"1 room for 1 person from 1st June for 3 nights","intent":"check_availability","entities":[{"start":0,"end":1,"label":"GUESTS"},{"start":25,"end":33,"label":"START_DATE"},{"start":38,"end":39,"label":"NIGHTS"}]}
+{"text":"do you have wifi","intent":"ask_wifi","entities":[]}
+{"text":"I want to book a double room for 2 people from 10th July for 5 nights","intent":"book_room","entities":[{"start":23,"end":29,"label":"ROOM_TYPE"},{"start":34,"end":35,"label":"GUESTS"},{"start":40,"end":48,"label":"START_DATE"},{"start":53,"end":54,"label":"NIGHTS"}]}
+{"text":"Is breakfast included in the price?","intent":"ask_breakfast_included","entities":[]}
+{"text":"Can I check out late on the day of departure?","intent":"ask_late_checkout","entities":[]}
+{"text":"I need a room with a sea view for 3 nights starting from 15th August","intent":"book_room_with_view","entities":[{"start":14,"end":18,"label":"ROOM_TYPE"},{"start":33,"end":34,"label":"NIGHTS"},{"start":52,"end":62,"label":"START_DATE"}]}
+{"text":"What is the cancellation policy for your hotel?","intent":"ask_cancellation_policy","entities":[]}
+{"text":"Do you have any special offers or discounts available?","intent":"ask_special_offers","entities":[]}
+{"text":"I want to book a suite for 4 people from 20th September for 7 nights","intent":"book_room","entities":[{"start":23,"end":28,"label":"ROOM_TYPE"},{"start":33,"end":34,"label":"GUESTS"},{"start":39,"end":52,"label":"START_DATE"},{"start":57,"end":58,"label":"NIGHTS"}]}
+{"text":"Is there a gym in the hotel?","intent":"ask_gym_availability","entities":[]}
+{"text":"Can I request a late check-in?","intent":"ask_late_checkin","entities":[]}
+{"text":"I want to book a single room for 1 person from 5th May for 2 nights","intent":"book_room","entities":[{"start":23,"end":28,"label":"ROOM_TYPE"},{"start":33,"end":34,"label":"GUESTS"},{"start":39,"end":46,"label":"START_DATE"},{"start":51,"end":52,"label":"NIGHTS"}]}
+{"text":"Do you have parking facilities?","intent":"ask_parking_availability","entities":[]}
+{"text":"Is there a swimming pool in the hotel?","intent":"ask_pool_availability","entities":[]}
+{"text":"I want to book a family room for 5 people from 1st December for 10 nights","intent":"book_room","entities":[{"start":23,"end":28,"label":"ROOM_TYPE"},{"start":33,"end":34,"label":"GUESTS"},{"start":39,"end":51,"label":"START_DATE"},{"start":56,"end":58,"label":"NIGHTS"}]}
+{"text":"Can I get a room with a balcony?","intent":"ask_balcony_availability","entities":[]}
+{"text":"What are the check-in and check-out times?","intent":"ask_checkin_checkout_times","entities":[]}
+{"text":"I want to book a deluxe room for 3 people from 10th October for 4 nights","intent":"book_room","entities":[{"start":23,"end":29,"label":"ROOM_TYPE"},{"start":34,"end":35,"label":"GUESTS"},{"start":40,"end":51,"label":"START_DATE"},{"start":56,"end":57,"label":"NIGHTS"}]}

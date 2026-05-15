@@ -4,3 +4,8 @@ python -m spacy train config.cfg \                                  ✔  f
   --output ./model \
   --paths.train data/train.spacy \
   --paths.dev data/train.spacyp
+
+
+  spacy train config.cfg \
+  --output ./model \
+  --paths.init_tok2vec ./model/model-best

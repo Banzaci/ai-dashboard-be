@@ -27,20 +27,12 @@
       "START_DATE"
     ],
     "textcat":[
+      "ask_pool",
       "check_availability",
+      "conversation_update",
+      "ask_parking",
       "ask_wifi",
-      "book_room",
-      "ask_breakfast_included",
-      "ask_late_checkout",
-      "book_room_with_view",
-      "ask_cancellation_policy",
-      "ask_special_offers",
-      "ask_gym_availability",
-      "ask_late_checkin",
-      "ask_parking_availability",
-      "ask_pool_availability",
-      "ask_balcony_availability",
-      "ask_checkin_checkout_times"
+      "ask_breakfast"
     ]
   },
   "pipeline":[
@@ -57,24 +49,24 @@
 
   ],
   "performance":{
-    "ents_f":1.0,
-    "ents_p":1.0,
-    "ents_r":1.0,
+    "ents_f":0.9736720554,
+    "ents_p":0.9638774577,
+    "ents_r":0.9836677555,
     "ents_per_type":{
-      "GUESTS":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
       "START_DATE":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
+        "p":0.9837153197,
+        "r":0.9987752603,
+        "f":0.9911880887
       },
       "NIGHTS":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
+        "p":0.915912031,
+        "r":0.9943820225,
+        "f":0.9535353535
+      },
+      "GUESTS":{
+        "p":0.998998999,
+        "r":0.943289225,
+        "f":0.9703451629
       },
       "ROOM_TYPE":{
         "p":1.0,
@@ -92,7 +84,22 @@
     "cats_macro_f":1.0,
     "cats_macro_auc":1.0,
     "cats_f_per_type":{
+      "ask_pool":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
       "check_availability":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "conversation_update":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "ask_parking":{
         "p":1.0,
         "r":1.0,
         "f":1.0
@@ -102,69 +109,14 @@
         "r":1.0,
         "f":1.0
       },
-      "book_room":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_breakfast_included":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_late_checkout":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "book_room_with_view":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_cancellation_policy":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_special_offers":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_gym_availability":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_late_checkin":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_parking_availability":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_pool_availability":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_balcony_availability":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
-      },
-      "ask_checkin_checkout_times":{
+      "ask_breakfast":{
         "p":1.0,
         "r":1.0,
         "f":1.0
       }
     },
-    "tok2vec_loss":0.000000035,
-    "ner_loss":0.0000000729,
-    "textcat_loss":0.0068400747
+    "tok2vec_loss":264.3918210205,
+    "ner_loss":914.4176025391,
+    "textcat_loss":0.0000277917
   }
 }

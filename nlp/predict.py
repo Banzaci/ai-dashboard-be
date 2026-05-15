@@ -1,43 +1,35 @@
 import spacy
-
 import os
-print("CWD:", os.getcwd())
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "model", "model-best")
 
 nlp = spacy.load(MODEL_PATH)
 
+INTENT_THRESHOLD = 0.6
+
 
 def predict(text: str):
+
+    if not text:
+        return {"intent": "unknown", "confidence": 0.0, "entities": []}
+
     doc = nlp(text)
 
-    intent_scores = doc.cats
+    best_intent, best_score = max(
+        doc.cats.items(),
+        key=lambda x: x[1],
+        default=("unknown", 0.0)
+    )
 
-    best_intent = ""
-    best_score = -1.0
-
-    for k, v in intent_scores.items():
-        if v > best_score:
-            best_score = v
-            best_intent = k
-
-    # safety fallback
-    if best_intent == "":
+    if best_score < INTENT_THRESHOLD:
         best_intent = "unknown"
-
-    entities = [
-        {"text": ent.text, "label": ent.label_}
-        for ent in doc.ents
-    ]
 
     return {
         "intent": best_intent,
-        "confidence": best_score,
-        "entities": entities
+        "confidence": float(best_score),
+        "entities": [
+            {"text": e.text, "label": e.label_}
+            for e in doc.ents
+        ]
     }
-
-
-if __name__ == "__main__":
-    text = "1 room for 2 people from 1st June for 3 nights"
-    print(predict(text))

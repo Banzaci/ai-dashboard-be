@@ -1,19 +1,11 @@
 {
   "labels":[
+    "ask_pool",
     "check_availability",
+    "conversation_update",
+    "ask_parking",
     "ask_wifi",
-    "book_room",
-    "ask_breakfast_included",
-    "ask_late_checkout",
-    "book_room_with_view",
-    "ask_cancellation_policy",
-    "ask_special_offers",
-    "ask_gym_availability",
-    "ask_late_checkin",
-    "ask_parking_availability",
-    "ask_pool_availability",
-    "ask_balcony_availability",
-    "ask_checkin_checkout_times"
+    "ask_breakfast"
   ],
   "threshold":0.0,
   "positive_label":null
